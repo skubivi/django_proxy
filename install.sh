@@ -7,8 +7,8 @@ read -p "Python interpreter: " base_python_interpreter
 read -p "Your domain without protocol (for example, google.com): " project_domain
 `$base_python_interpreter -m venv env`
 source env/bin/activate
-pip install -U pip
-pip install -r requirements.txt
+python -m pip install -U pip
+python -m pip install -r requirements.txt
 
 sed -i "s~dbms_template_path~$project_path~g" nginx/site.conf systemd/gunicorn.service
 sed -i "s~dbms_template_domain~$project_domain~g" nginx/site.conf src/djangoProject1/settings.py
